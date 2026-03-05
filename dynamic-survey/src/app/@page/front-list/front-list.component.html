@@ -1,0 +1,90 @@
+
+
+<div class="container">
+  <div class="search-box">
+    <div class="search-row">
+      問卷名稱：
+      <input type="text" [(ngModel)]="keyword" placeholder="請輸入關鍵字">
+    </div>
+
+    <div class="search-row">
+      統計時間：
+      <input type="date" [(ngModel)]="startDate">
+      <span> 到 </span>
+      <input type="date" [(ngModel)]="endDate">
+      <button class="btn-search" (click)="search()">搜尋</button>
+    </div>
+  </div>
+
+  <table class="survey-table">
+    <thead>
+      <tr>
+        <th>編號</th>
+        <th>問卷名稱</th>
+        <th>狀態</th>
+        <th>開始時間</th>
+        <th>結束時間</th>
+        <th>觀看統計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of pagedData">
+        <td>#{{ s.id }}</td>
+
+        <td>
+          <a *ngIf="getStatus(s) === '進行中'" [routerLink]="['/fill', s.id]" class="link-fill">
+            {{ s.title }}
+          </a>
+          <span *ngIf="getStatus(s) !== '進行中'">{{ s.title }}</span>
+        </td>
+
+        <td>
+          <span [ngClass]="{
+            'status-tag': true,
+            'not-start': getStatus(s) === '尚未開始',
+            'active': getStatus(s) === '進行中',
+            'ended': getStatus(s) === '已結束'
+          }">
+            {{ getStatus(s) }}
+          </span>
+        </td>
+
+        <td>{{ s.startDate }}</td>
+        <td>{{ s.endDate }}</td>
+
+        <td>
+          <a *ngIf="getStatus(s) !== '尚未開始'" [routerLink]="['/stat', s.id]" class="link-stat">
+            前往
+          </a>
+          <span *ngIf="getStatus(s) === '尚未開始'">-</span>
+        </td>
+      </tr>
+
+      <tr *ngIf="filteredSurveys.length === 0">
+        <td colspan="6" style="text-align: center; padding: 20px;">找不到符合條件的問卷</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button class="page-arrow"
+            (click)="currentPage = currentPage - 1"
+            [disabled]="currentPage === 1">
+      &laquo; 上一頁
+    </button>
+
+    <div class="page-numbers">
+      <button *ngFor="let p of pageList"
+              (click)="currentPage = p"
+              [class.active]="currentPage === p">
+        {{ p }}
+      </button>
+    </div>
+
+    <button class="page-arrow"
+            (click)="currentPage = currentPage + 1"
+            [disabled]="currentPage === totalPages">
+      下一頁 &raquo;
+    </button>
+  </div>
+</div>

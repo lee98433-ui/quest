@@ -1,0 +1,73 @@
+<div class="container" *ngIf="surveyData">
+
+  <div class="header">
+    <span class="date">問卷開始與結束時間：{{surveyData.startDate}} - {{surveyData.endDate}}</span>
+    <h1>{{surveyData.title}}</h1>
+    <p class="desc">{{surveyData.description}}</p>
+  </div>
+
+  <form [formGroup]="surveyForm">
+
+    <div class="fixed-fields">
+      <div class="field-row">
+        <label>姓名：</label>
+        <input type="text" formControlName="name" placeholder="請輸入姓名">
+      </div>
+
+      <div class="field-row">
+        <label>手機：</label>
+        <input type="text" formControlName="phone" placeholder="例如：0912345678">
+      </div>
+
+      <div class="field-row">
+        <label>E-mail：</label>
+        <input type="email" formControlName="email" placeholder="example@mail.com">
+      </div>
+
+      <div class="field-row">
+        <label>年齡：</label>
+        <input type="number" formControlName="age" min="1" max="150">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="dynamic-questions">
+      <div *ngFor="let q of surveyData.questions; let i = index" class="q-box">
+        <p class="q-title">
+          {{ i + 1 }}. {{ q.title }}
+          <span class="required-hint" *ngIf="q.required">(必填)</span>
+        </p>
+
+        <div *ngIf="q.type === 'radio'" class="options-group">
+          <label *ngFor="let opt of q.options" class="option-label">
+            <input type="radio"
+                   [formControl]="getControl(i)"
+                   [value]="opt">
+            {{ opt }}
+          </label>
+        </div>
+
+        <div *ngIf="q.type === 'checkbox'" class="options-group">
+          <label *ngFor="let opt of q.options" class="option-label">
+            <input type="checkbox"
+                   (change)="onCheckboxChange($event, i, opt)">
+            {{ opt }}
+          </label>
+        </div>
+
+        <div *ngIf="q.type === 'textarea'" class="text-group">
+          <textarea [formControl]="getControl(i)"
+                    placeholder="請在此輸入您的看法..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn-cancel" (click)="goBack()">取消</button>
+      <button type="button" class="btn-submit" (click)="submitToSession()">送出</button>
+    </div>
+  </form>
+</div>
+
+

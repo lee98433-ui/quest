@@ -1,0 +1,37 @@
+<div class="container read-only">
+  <div class="header">
+    <span class="date">{{surveyData.startDate}} - {{surveyData.endDate}}</span>
+    <h1>{{surveyData.title}}</h1>
+    <p class="desc">{{surveyData.description}}</p>
+  </div>
+
+  <div class="info-display">
+    <div class="row"><span>姓名：</span>{{userData.name}}</div>
+    <div class="row"><span>手機：</span>{{userData.phone}}</div>
+    <div class="row"><span>E-mail：</span>{{userData.email}}</div>
+    <div class="row"><span>年齡：</span>{{userData.age || '-'}}</div>
+  </div>
+
+  <div class="answers-display">
+    <div *ngFor="let q of surveyData.questions; let i = index" class="q-result">
+      <p>{{i+1}}. {{q.title}}</p>
+
+      <div class="ans-content">
+        <ng-container *ngIf="userData.answers[i]; else noAns">
+          <div *ngIf="q.type === 'checkbox'">
+            <div *ngFor="let a of userData.answers[i].split(';')">● {{a}}</div>
+          </div>
+          <div *ngIf="q.type !== 'checkbox'">
+            {{userData.answers[i]}}
+          </div>
+        </ng-container>
+        <ng-template #noAns><span class="none">-</span></ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn-modify" (click)="onModify()">修改</button>
+    <button type="button" class="btn-submit" (click)="onSubmit()">送出</button>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+/* 整體容器：模擬紙張感 */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 40px;
+  background-color: #e89df1;
+  font-family: "Microsoft JhengHei", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 頁首：標題與時間 */
+.header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+
+  .date {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    border: 1px solid #ffee00; /* 圖片中的橘色邊框 */
+    color: #ffee00;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 2px;
+  }
+
+  h1 {
+    font-size: 24px;
+    color: #000;
+    margin: 10px 0;
+    border: 1px solid #9d70a7; /* 圖片中標題外的細框 */
+    display: inline-block;
+    padding: 5px 15px;
+  }
+}
+
+/* 問卷說明區塊 */
+.desc {
+  border: 1.5px solid #aaddff; /* 淺藍色邊框 */
+  padding: 15px;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 30px;
+  background-color: #e0aade;
+  word-break: break-all;
+}
+
+/* 固定填寫欄位 (姓名、手機等) */
+.fixed-fields {
+  margin-bottom: 30px;
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+
+    input {
+      flex: 1;
+      margin-left: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+
+      &:focus {
+        border-color: #66afe9;
+      }
+    }
+  }
+}
+
+/* 動態問題區塊 */
+.q-box {
+  margin-bottom: 25px;
+
+  p {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block; /* 選項換行 */
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-weight: normal;
+
+    input {
+      margin-right: 8px;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+}
+
+/* 右下角按鈕區 */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 40px;
+
+  button {
+    padding: 8px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #fff;
+    border-radius: 4px;
+    transition: 0.3s;
+
+    /* 取消按鈕 */
+    &:first-child {
+      border: 1px solid #999;
+      color: #666;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+
+    /* 送出按鈕 */
+    &:last-child {
+      border: 2px solid #5cb85c; /* 圖片中的綠色邊框 */
+      color: #5cb85c;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #5cb85c;
+        color: #fff;
+      }
+    }
+  }
+}
+
+/* 必填星號或文字提醒 */
+.required-text {
+  color: #d9534f;
+  font-size: 12px;
+  margin-left: 5px;
+}

@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+}
+
+.search-box {
+  border: 5px solid #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  background: #fe6eed;
+  text-align: center;
+  line-height:50px;
+
+}
+
+.survey-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-left: 20%;
+}
+
+.survey-table th {
+  background: #690081;
+  color: white;
+  padding: 10px;
+}
+
+.survey-table td {
+  border: 1px solid #ccc;
+  background-color:  #ffcaf6;
+
+  padding: 10px;
+}
+
+.not-start { color: gray; }
+.active { color: green; font-weight: bold; }
+.ended { color: red; }
+
+.pagination {
+  margin-top: 15px;
+  text-align: center;
+}

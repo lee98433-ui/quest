@@ -1,0 +1,37 @@
+.read-only {
+  .info-display {
+    margin-bottom: 30px;
+    .row {
+      margin-bottom: 15 thumb;
+      font-size: 16px;
+      span {
+        display: inline-block;
+        width: 80px;
+        color: #666;
+      }
+    }
+  }
+
+  .q-result {
+    margin-bottom: 25px;
+    p { font-weight: bold; margin-bottom: 8px; }
+    .ans-content {
+      padding-left: 20px;
+      color: #333;
+      white-space: pre-wrap; // 保留換行
+    }
+  }
+
+  .btn-modify {
+    border: 1px solid #999;
+    color: #666;
+    &:hover { background: #eee; }
+  }
+
+  .btn-submit {
+    border: 2px solid #d9534f; // 截圖中送出鈕為紅框樣式
+    color: #d9534f;
+    font-weight: bold;
+    &:hover { background: #d9534f; color: #fff; }
+  }
+}
