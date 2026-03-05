@@ -2,7 +2,30 @@
   max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
+  // margin: 0 auto;
+
 }
+.page-header {
+  text-align: center; /* 置中 */
+  margin-top: 40px;   /* 與頂部的距離 */
+  margin-bottom: 40px; /* 與搜尋框的距離 */
+}
+
+.page-header h1 {
+  font-size: 3rem;    /* 讓標題「很大」 */
+  color: #333;        /* 標題顏色 */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.page-header h3 {
+  font-size: 1.5rem;  /* 副標題大小 */
+  color: #666;        /* 副標題顏色稍微淺一點 */
+  font-weight: normal;
+}
+
+/* 額外提醒：確保 container 有足夠寬度，標題才不會換行 */
+
 
 /* 搜尋區塊：粉色大方框 + 白色邊框 */
 .search-box {
