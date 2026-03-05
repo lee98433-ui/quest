@@ -22,8 +22,9 @@
             <div *ngFor="let a of userData.answers[i].split(';')">● {{a}}</div>
           </div>
           <div *ngIf="q.type !== 'checkbox'">
-            {{userData.answers[i]}}
+            {{userData.answers[i]|| '-'}}
           </div>
+
         </ng-container>
         <ng-template #noAns><span class="none">-</span></ng-template>
       </div>

@@ -15,17 +15,17 @@
       </div>
 
       <div class="field-row">
-        <label>手機：</label>
+        <label>手機:</label>
         <input type="text" formControlName="phone" placeholder="例如：0912345678">
       </div>
 
       <div class="field-row">
-        <label>E-mail：</label>
+        <label>E-mail:</label>
         <input type="email" formControlName="email" placeholder="example@mail.com">
       </div>
 
       <div class="field-row">
-        <label>年齡：</label>
+        <label>年齡:</label>
         <input type="number" formControlName="age" min="1" max="150">
       </div>
     </div>
@@ -42,8 +42,8 @@
         <div *ngIf="q.type === 'radio'" class="options-group">
           <label *ngFor="let opt of q.options" class="option-label">
             <input type="radio"
-                   [formControl]="getControl(i)"
-                   [value]="opt">
+                    [formControl]="getControl(i)"
+                    [value]="opt">
             {{ opt }}
           </label>
         </div>
@@ -51,7 +51,7 @@
         <div *ngIf="q.type === 'checkbox'" class="options-group">
           <label *ngFor="let opt of q.options" class="option-label">
             <input type="checkbox"
-                   (change)="onCheckboxChange($event, i, opt)">
+                    (change)="onCheckboxChange($event, i, opt)">
             {{ opt }}
           </label>
         </div>
@@ -60,6 +60,14 @@
           <textarea [formControl]="getControl(i)"
                     placeholder="請在此輸入您的看法..."></textarea>
         </div>
+        <div *ngIf="q.type === 'date' || q.type === 'date'" class="date-group">
+  <input [type]="q.type"
+          [min]="minDate"
+          [formControl]="getControl(i)"
+          class="date-input">
+  </div>
+
+
       </div>
     </div>
 

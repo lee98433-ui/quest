@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({ providedIn: 'root' })
 export class SurveyService {
@@ -22,11 +23,31 @@ export class SurveyService {
       startDate: '2025/08/01',
       endDate: '2026/10/12',
       questions: [
-        { id: 1, title: '請選擇想要切開的東西', type: 'radio', options: ['衣服', '水果', '意識'], required: true },
+        { id: 1, title: '請選擇想要切開的東西', type: 'radio', options: ['衣服', '水果', '意識','人生'], required: true },
         { id: 2, title: '請說明理由', type: 'textarea', required: false },
-        { id: 3, title: '何者是昆蟲', type: 'checkbox', options: ['螞蟻', '蝴蝶', '蜈蚣', '石頭'], required: true }
+        { id: 3, title: '何者是昆蟲', type: 'checkbox', options: ['螞蟻', '蝴蝶', '蜈蚣', '石頭','俗投','失敗的蜜蜂'], required: true }
       ]
-    }
+    },
+    {
+      id: 103,
+      title: '沒有意義的票選B',
+      description: '我也是活過了',
+      startDate: '2025/01/01',
+      endDate: '2026/01/12',
+      questions:[]
+    },
+    {
+      id: 104,
+      title: '你的目的是',
+      description: '你有甚麼企圖',
+      startDate: '2025/01/01',
+      endDate: '2026/09/12',
+      questions:[
+        {id:1,title:'你不可能沒有目標的吧',type: 'radio',options:['是','否'],required: true},
+        {id:2,title:'那你的目標是甚麼',type:'textarea',required: true},
+        {id:3,title:'你預計何時實現你的目標',type:'date',required: true}
+      ]
+    },
   ];
 
 
