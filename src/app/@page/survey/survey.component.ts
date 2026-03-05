@@ -96,7 +96,7 @@ surveyForm!: FormGroup;
 
   submitToSession() {
     if (this.surveyForm.invalid) {
-      alert('請檢查格式以及必填欄位（姓名、手機、Email 為必填）');
+      alert('請檢查格式以及必填欄位是否有誤');
       return;
     }
 
