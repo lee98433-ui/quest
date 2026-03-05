@@ -23,10 +23,16 @@ surveyId!: number;
     this.surveyId = Number(this.route.snapshot.params['id']);
     this.surveyData = this.surveyService.getSurveyById(this.surveyId);
 
-    const saved = sessionStorage.getItem('temp_survey_data');
+const saved = sessionStorage.getItem('temp_survey_data');
     if (saved) {
       this.userData = JSON.parse(saved);
+      // 安全檢查：確保暫存資料的 ID 與網址一致
+      if (this.userData.surveyId !== this.surveyId) {
+        alert('資料不一致，請重新填寫');
+        this.router.navigate(['/list']);
+      }
     } else {
+      // 若無暫存資料，導回列表
       this.router.navigate(['/list']);
     }
   }
@@ -35,13 +41,16 @@ surveyId!: number;
     this.router.navigate(['/fill', this.surveyId]);
   }
 
-  onSubmit() {
-    if (confirm('確定要送出嗎？')) {
-      // 這裡執行 API POST 送往資料庫
-      console.log('Final Data to DB:', this.userData);
+onSubmit() {
+    if (confirm('確定要送出問卷嗎？送出後將無法修改。')) {
+      // 1. 呼叫 Service 的儲存方法（這是上一段我們寫在 Service 的方法）
+      this.surveyService.saveFinalSubmission(this.userData);
 
-      sessionStorage.removeItem('temp_survey_data'); // 清空 Session
-      alert('問卷已成功送出！');
+      // 2. 清除暫存，避免重複送出
+      sessionStorage.removeItem('temp_survey_data');
+
+      // 3. 提示成功並跳轉
+      alert('問卷成功送出！');
       this.router.navigate(['/list']);
     }
   }

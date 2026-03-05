@@ -1,0 +1,80 @@
+<div class="container" *ngIf="surveyData">
+  <header class="dashboard-header">
+    <div class="title-content">
+      <div class="breadcrumb" routerLink="">← 返回問卷列表</div>
+      <h1>{{ surveyData.title }}</h1>
+      <div class="stats-pills">
+        <span class="pill"><i class="icon">📅</i> 統計區間：{{ surveyData.startDate }} ~ {{ surveyData.endDate }}</span>
+        <span class="pill active"><i class="icon">👥</i> 累積回覆：{{ processedStats[0]?.total || 0 }} 筆</span>
+      </div>
+    </div>
+    <button class="btn-launch-report" (click)="openFullDashboard()">
+      <span class="btn-icon">📊</span>
+      查看完整分析報告
+    </button>
+  </header>
+
+  <div class="question-summary-list">
+    <div class="list-header">
+      <span class="col-num">編號</span>
+      <span class="col-title">問題名稱</span>
+      <span class="col-type">類型</span>
+      <span class="col-data">數據摘要</span>
+    </div>
+
+    <div *ngFor="let stat of processedStats; let i = index" class="summary-row">
+      <div class="col-num">{{ i + 1 }}</div>
+      <div class="col-title"><strong>{{ stat.title }}</strong></div>
+      <div class="col-type">
+        <span class="type-tag" [ngClass]="stat.type">{{ stat.type === 'textarea' ? '問答' : '選擇' }}</span>
+      </div>
+      <div class="col-data">
+        <div *ngIf="stat.type !== 'textarea'" class="summary-tags">
+          <span *ngFor="let entry of stat.data | keyvalue" class="mini-tag">
+            {{ entry.key }} ({{ entry.value }})
+          </span>
+        </div>
+        <div *ngIf="stat.type === 'textarea'" class="summary-text">
+          已收集 {{ stat.feedbacks.length }} 則留言
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="showModal" [class.active]="showModal" (click)="closeModal()">
+    <div class="modal-dashboard" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h2>問卷統計分析儀表板</h2>
+          <small>Survey ID: #{{ surveyData.id }}</small>
+        </div>
+        <button class="btn-close" (click)="closeModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="dashboard-grid">
+          <div class="chart-card" *ngFor="let stat of processedStats; let i = index" [hidden]="stat.type === 'textarea'">
+            <h4>{{ stat.title }}</h4>
+            <div class="chart-container">
+              <canvas [id]="'modalChart-' + i"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-results" *ngIf="hasTextQuestions()">
+          <h3>💬 意見回饋清單</h3>
+          <div class="text-grid">
+            <div *ngFor="let stat of processedStats">
+              <div class="text-group" *ngIf="stat.type === 'textarea'">
+                <label>{{ stat.title }}</label>
+                <ul>
+                  <li *ngFor="let f of stat.feedbacks">「{{ f }}」</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

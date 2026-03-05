@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="OMO">
+    <h1>
+      橘前輩會看著你把問卷填完的(<span class="omoEye">O</span><span style="color: black;">M</span><span class="omoEye">O</span>)
+    </h1>
+
+    <img src="./IMG/02.gif" alt="OMO" (click)="openVideo()" class="omo-img">
+  </div>
+
+  <div class="video-overlay" *ngIf="showVideo" (click)="closeVideo()">
+    <div class="video-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <span style="color: gold;">為甚麼只是看著--><span style="color: #a30031;">(<span class="omoEye">O</span><span style="color: rgb(0, 0, 0);">M</span><span class="omoEye">O</span>)</span><--恐⭐怖⭐心</span>
+        <button class="close-btn" (click)="closeVideo()">&times;</button>
+      </div>
+      <div class="video-body">
+        <iframe
+        [src]="safeVideoUrl"
+  width="100%"
+  height="100%"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+      </div>
+    </div>
+  </div>
+</div>

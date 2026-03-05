@@ -1,5 +1,5 @@
 <nav class="main-header">
-  <div class="logo" routerLink="/dynamic-survey/src/app/@page/front-list" style="cursor: pointer;">綜合問券System</div>
+  <div class="logo" routerLink="/dynamic-survey/src/app/@page/front-list" style="cursor: pointer;">統合問卷系統</div>
 
   <div class="user-zone">
     <ng-container *ngIf="!(authService.currentUser$ | async); else userLoggedIn">
@@ -15,14 +15,14 @@
 
 <div class="login-modal" *ngIf="showModal">
   <div class="modal-content">
-    <h3>系統登入</h3>
+    <h3>會員登入</h3>
     <div class="form-group">
       <label>帳號：</label>
       <input type="text" [(ngModel)]="loginUser">
     </div>
     <div class="form-group">
       <label>密碼：</label>
-      <input type="password" [(ngModel)]="loginPwd">
+      <input id="myInput" type="password" [(ngModel)]="loginPwd">
     </div>
     <div class="modal-actions">
       <button (click)="onLogin()">確認登入</button>
@@ -33,4 +33,6 @@
 
 <main class="content-area">
   <router-outlet></router-outlet>
+
+  <app-fill></app-fill>
 

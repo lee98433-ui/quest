@@ -45,7 +45,7 @@ export class SurveyService {
       questions:[
         {id:1,title:'你不可能沒有目標的吧',type: 'radio',options:['是','否'],required: true},
         {id:2,title:'那你的目標是甚麼',type:'textarea',required: true},
-        {id:3,title:'你預計何時實現你的目標',type:'date',required: true}
+        {id:3,title:'你預計何時實現你的目標',type:'textarea',required: true}
       ]
     },
   ];
@@ -62,5 +62,21 @@ export class SurveyService {
   getSurveyById(id: number): any {
     return this.allSurveys.find(s => s.id === id);
   }
+
+  // 1. 存放所有人的填寫結果
+  private allSubmissions: any[] = [];
+
+  // 當使用者在「確認頁」按送出時，呼叫此方法
+  saveFinalSubmission(data: any) {
+    this.allSubmissions.push(data);
+    console.log('目前總累積筆數:', this.allSubmissions.length);
+  }
+
+  // 2. 取得特定問卷的所有回覆
+  getSubmissionsBySurveyId(surveyId: number) {
+    return this.allSubmissions.filter(s => s.surveyId === surveyId);
+  }
+
+  // ... 原有的 getSurveyById 等方法保持不變
 
 }

@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './@service2/auth.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router'
+import { FillComponent } from './@page/fill/fill.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink],
+  imports: [RouterOutlet,FormsModule,CommonModule,RouterLink,FillComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

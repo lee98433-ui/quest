@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { SurveyComponent } from './@page/survey/survey.component';
 import { FrontListComponent } from './@page/front-list/front-list.component';
 import { ConfirmComponentComponent } from './@page/confirm-component/confirm-component.component';
+import { StatComponent } from './@page/stat/stat.component';
+import { FillComponent } from './@page/fill/fill.component';
 
 export const routes: Routes = [
   // {path:'survey',component:SurveyComponent},
@@ -18,6 +20,10 @@ export const routes: Routes = [
 
   // 3. 問卷確認頁 (需帶入問卷編號 id)
   { path: 'confirm/:id', component: ConfirmComponentComponent },
+
+  //3.5問卷統計頁
+  {path:'stat/:id',component:StatComponent},
+  {path:'fill',component:FillComponent},
 
   // 4. 萬用路徑 (找不到網頁時導回列表)
   { path: '**', redirectTo: 'list' }

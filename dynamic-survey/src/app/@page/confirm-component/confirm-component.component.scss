@@ -1,37 +1,119 @@
-.read-only {
-  .info-display {
-    margin-bottom: 30px;
-    .row {
-      margin-bottom: 15 thumb;
-      font-size: 16px;
-      span {
-        display: inline-block;
-        width: 80px;
-        color: #666;
-      }
-    }
-  }
+/* 確認頁容器 */
+.container.read-only {
+  background-color: #FFD6F9; /* 淡粉色背景 */
+  border: 4px solid white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
-  .q-result {
-    margin-bottom: 25px;
-    p { font-weight: bold; margin-bottom: 8px; }
-    .ans-content {
-      padding-left: 20px;
-      color: #333;
-      white-space: pre-wrap; // 保留換行
-    }
-  }
+/* 頁首：日期與標題 */
+.header {
+  text-align: center;
+  border-bottom: 2px solid #5E017E;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
 
-  .btn-modify {
-    border: 1px solid #999;
-    color: #666;
-    &:hover { background: #eee; }
-  }
+.header .date {
+  background-color: #5E017E;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
 
-  .btn-submit {
-    border: 2px solid #d9534f; // 截圖中送出鈕為紅框樣式
-    color: #d9534f;
-    font-weight: bold;
-    &:hover { background: #d9534f; color: #fff; }
-  }
+.header h1 {
+  color: #5E017E;
+  margin: 15px 0;
+}
+
+.header .desc {
+  color: #555;
+  font-style: italic;
+}
+
+/* 使用者資訊區塊 */
+.info-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.info-display .row {
+  color: #333;
+}
+
+.info-display span {
+  font-weight: bold;
+  color: #5E017E;
+}
+
+/* 問題回答區塊 */
+.q-result {
+  margin-bottom: 25px;
+  border-left: 5px solid #FF7EE2;
+  padding-left: 15px;
+}
+
+.q-result p {
+  font-weight: bold;
+  color: #5E017E;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.ans-content {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #444;
+}
+
+/* 按鈕區塊 */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.btn-modify {
+  background-color: white;
+  color: #5E017E;
+  border: 2px solid #5E017E;
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-modify:hover {
+  background-color: #5E017E;
+  color: white;
+}
+
+.btn-submit {
+  background-color: #5E017E;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(94, 1, 126, 0.3);
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #FF7EE2;
+  transform: translateY(-2px);
 }

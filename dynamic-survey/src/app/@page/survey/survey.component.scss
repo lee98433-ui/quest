@@ -1,162 +1,162 @@
-/* 整體容器：模擬紙張感 */
+/* 填寫頁容器 */
 .container {
-  max-width: 800px;
-  margin: 20px auto;
+  background-color: #FFD6F9; /* 淡粉背景 */
+  border: 4px solid white;    /* 白色粗邊框 */
+  border-radius: 20px;
   padding: 40px;
-  background-color: #e89df1;
-  font-family: "Microsoft JhengHei", sans-serif;
-  color: #333;
+  max-width: 850px;
+  margin: 30px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* 頁首標題區 */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header .date {
+  background-color: #ffa200;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.header h1 {
+  color: #5E017E;
+  font-size: 2.2rem;
+  margin: 20px 0 10px;
+}
+
+.header .desc {
+  color: #666;
+  font-size: 1.05rem;
   line-height: 1.6;
 }
 
-/* 頁首：標題與時間 */
-.header {
-  position: relative;
-  text-align: center;
-  margin-bottom: 30px;
-
-  .date {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    border: 1px solid #ffee00; /* 圖片中的橘色邊框 */
-    color: #ffee00;
-    padding: 2px 8px;
-    font-size: 12px;
-    border-radius: 2px;
-  }
-
-  h1 {
-    font-size: 24px;
-    color: #000000;
-    margin: 10px 0;
-    border: 3px solid #f0c7f9; /* 圖片中標題外的細框 */
-    display: inline-block;
-    padding: 5px 15px;
-  }
-}
-
-/* 問卷說明區塊 */
-.desc {
-  border: 1.5px solid #e89df1; /* 淺藍色邊框 */
-  padding: 15px;
-  font-size: 14px;
-  color: #000000;
-  margin-bottom: 30px;
-  background-color: #e0aade;
-  word-break: break-all;
-}
-
-/* 固定填寫欄位 (姓名、手機等) */
+/* 固定欄位區 (姓名、手機等) */
 .fixed-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 兩欄排列 */
+  gap: 20px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
   margin-bottom: 30px;
-
-  div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    font-weight: bold;
-
-    input {
-      flex: 1;
-      margin-left: 10px;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      outline: none;
-
-      &:focus {
-        border-color: #66afe9;
-      }
-    }
-  }
 }
 
-/* 動態問題區塊 */
-.q-box {
-  margin-bottom: 25px;
-
-  p {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  label {
-    display: block; /* 選項換行 */
-    margin-bottom: 8px;
-    cursor: pointer;
-    font-weight: normal;
-
-    input {
-      margin-right: 8px;
-    }
-  }
-
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-}
-
-/* 右下角按鈕區 */
-.actions {
+.field-row {
   display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  margin-top: 40px;
-
-  button {
-    padding: 8px 25px;
-    cursor: pointer;
-    font-size: 16px;
-    background: #fff;
-    border-radius: 4px;
-    transition: 0.3s;
-
-    /* 取消按鈕 */
-    &:first-child {
-      border: 1px solid #999;
-      color: #666;
-
-      &:hover {
-        background-color: #f5f5f5;
-      }
-    }
-
-    /* 送出按鈕 */
-    &:last-child {
-      border: 2px solid #5cb85c; /* 圖片中的綠色邊框 */
-      color: #5cb85c;
-      font-weight: bold;
-
-      &:hover {
-        background-color: #5cb85c;
-        color: #fff;
-      }
-    }
-  }
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* 必填星號或文字提醒 */
-.required-text {
-  color: #d9534f;
-  font-size: 12px;
+.field-row label {
+  font-weight: bold;
+  color: #5E017E;
+}
+
+.field-row input {
+  padding: 10px;
+  border: 1px solid #E2A9E5;
+  border-radius: 8px;
+  outline: none;
+}
+
+.field-row input:focus {
+  border-color: #FF7EE2;
+  box-shadow: 0 0 5px rgba(255, 126, 226, 0.4);
+}
+
+/* 分隔線 */
+.divider {
+  border: none;
+  border-top: 2px dashed #E2A9E5;
+  margin: 40px 0;
+}
+
+/* 動態題目區 */
+.q-box {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border-left: 6px solid #FF7EE2; /* 題目左側桃紅裝飾線 */
+}
+
+.q-title {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #5E017E;
+  margin-bottom: 15px;
+}
+
+.required-hint {
+  color: #FF00FF;
+  font-size: 0.8rem;
   margin-left: 5px;
 }
-.date-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
 
-  // 針對手機端優化
-  &:focus {
-    border-color: #66afe9;
-    outline: none;
-  }
+/* 選項群組 */
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #444;
+}
+
+/* 文字方塊與日期輸入 */
+textarea, .date-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #E2A9E5;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+textarea { height: 120px; resize: vertical; }
+
+/* 按鈕區 */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.btn-cancel {
+  background: white;
+  color: #5E017E;
+  border: 2px solid #5E017E;
+  padding: 12px 35px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit {
+  background: #5E017E;
+  color: white;
+  border: none;
+  padding: 14px 50px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 15px rgba(94, 1, 126, 0.3);
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background: #FF7EE2;
+  transform: translateY(-2px);
 }
