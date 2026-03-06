@@ -45,7 +45,7 @@
     <div class="modal-dashboard" (click)="$event.stopPropagation()">
       <div class="modal-header">
         <div class="modal-title">
-          <h2>問卷統計分析儀表板</h2>
+          <h2>問卷統計結果</h2>
           <small>Survey ID: #{{ surveyData.id }}</small>
         </div>
         <button class="btn-close" (click)="closeModal()">&times;</button>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="text-results" *ngIf="hasTextQuestions()">
-          <h3>💬 意見回饋清單</h3>
+          <h3>問答部分結果</h3>
           <div class="text-grid">
             <div *ngFor="let stat of processedStats">
               <div class="text-group" *ngIf="stat.type === 'textarea'">
