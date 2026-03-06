@@ -60,7 +60,7 @@
 
         <td>
           <a *ngIf="getStatus(s) !== '尚未開始'" [routerLink]="['/stat', s.id]" class="link-stat">
-            前往
+            查看
           </a>
           <span *ngIf="getStatus(s) === '尚未開始'">-</span>
         </td>
