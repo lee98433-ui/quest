@@ -1,26 +1,38 @@
 
-
-
-
 <div class="container">
   <div class="page-header">
     <h1>歡迎來到統合問卷系統</h1>
     <h3>請選擇你要查看的問卷</h3>
   </div>
-  <div class="search-box">
-    <div class="search-row">
-      問卷名稱：
-      <input type="text" [(ngModel)]="keyword" placeholder="請輸入關鍵字">
-    </div>
 
-    <div class="search-row">
-      統計時間：
-      <input type="date" [(ngModel)]="startDate">
-      <span> 到 </span>
-      <input type="date" [(ngModel)]="endDate">
-      <button class="btn-search" (click)="search()">搜尋</button>
-    </div>
+
+<div class="search-box">
+  <div class="search-row">
+    問卷名稱：
+    <input type="text" [(ngModel)]="keyword" placeholder="請輸入關鍵字" class="keyword-input">
   </div>
+
+  <div class="search-row">請選擇日期範圍:
+    <mat-form-field appearance="outline" class="custom-mat-range">
+
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="">
+        <input matEndDate formControlName="end" placeholder="">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      @if (range.controls.start.hasError('matStartDateInvalid')) {
+        <mat-error>開始日期格式錯誤</mat-error>
+      }
+      @if (range.controls.end.hasError('matEndDateInvalid')) {
+        <mat-error>結束日期格式錯誤</mat-error>
+      }
+    </mat-form-field>
+
+    <button class="btn-search" (click)="search()">搜尋</button>
+  </div>
+</div>
 
   <table class="survey-table">
     <thead>

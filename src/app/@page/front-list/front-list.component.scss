@@ -41,7 +41,30 @@
 }
 
 .search-row {
-  margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+
+
+/* Material Datepicker 覆蓋 */
+.custom-mat-range {
+  background: white;
+  border-radius: 8px;
+  width: 300px;
+
+  ::ng-deep {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+
+    .mat-mdc-form-field-flex {
+      height: 50px !important;
+      align-items: center;
+    }
+    .mat-mdc-form-field-subscript-wrapper { display: none; } /* 隱藏下方空白 */
+  }
 }
 
 .search-box input {
@@ -51,8 +74,9 @@
 }
 
 .btn-search {
-  background-color: #eee;
-  border: 1px solid #999;
+  color: #ffffff;
+  background-color: #b000cb;
+  border: 1px solid #ffffff;
   padding: 3px 15px;
   cursor: pointer;
   margin-left: 10px;
